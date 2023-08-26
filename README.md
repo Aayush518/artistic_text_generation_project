@@ -78,7 +78,7 @@ artistic_text_generation_project/
 
 ## Enhancements
 
-This is a basic example of an artistic text generation project. You can further enhance the project by adding features like:
+This is a basic example of an artistic text generation project. We can further enhance the project by adding features like:
 - Improved UI and styling.
 - User authentication and saved text generation history.
 - Multiple text sources and styles for generation.
