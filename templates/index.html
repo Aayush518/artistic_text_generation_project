@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Artistic Text Generation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Artistic Text Generation</h1>
+        <form method="POST" action="/">
+            <textarea name="seed_text" placeholder="Enter your seed text here"></textarea>
+            <button type="submit">Generate</button>
+        </form>
+        <div class="generated-text">
+            <h2>Generated Artistic Text</h2>
+            <p>{{ generated_text }}</p>
+        </div>
+    </div>
+</body>
+</html>
