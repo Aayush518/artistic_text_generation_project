@@ -5,8 +5,14 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 
 app = Flask(__name__)
 
+# Global variables to store user settings
+selected_style = None
+word_count_limit = 100
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    global selected_style, word_count_limit
+
     # Load dataset
     with open("data/artistic_texts.txt", "r", encoding="utf-8") as f:
         artistic_texts = f.readlines()
@@ -21,7 +27,7 @@ def index():
         if seed_text:
             tokenizer = Tokenizer()
             tokenizer.fit_on_texts(artistic_texts)
-            generated_text = generate_text(model, tokenizer, seed_text, num_words=100)
+            generated_text = generate_text(model, tokenizer, seed_text, num_words=word_count_limit)
 
     return render_template('index.html', generated_text=generated_text)
 
