@@ -15,11 +15,15 @@ def main():
 
     seed_text = st.text_area("Enter your seed text here")
 
+    # Additional features: text style and word count
+    selected_style = st.selectbox("Select Text Style", ["Elegant", "Playful", "Mysterious"])
+    word_count_limit = st.number_input("Word Count Limit", min_value=10, max_value=500, value=100)
+
     if st.button("Generate"):
         if seed_text:
             tokenizer = Tokenizer()
             tokenizer.fit_on_texts(artistic_texts)
-            generated_text = generate_text(model, tokenizer, seed_text, num_words=100)
+            generated_text = generate_text(model, tokenizer, seed_text, num_words=word_count_limit)
             st.markdown("## Generated Artistic Text")
             st.write(generated_text, unsafe_allow_html=True)
 
