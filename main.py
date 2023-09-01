@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+import os
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 from flask_wtf import FlaskForm
@@ -8,6 +8,9 @@ from wtforms.validators import DataRequired, Length, Email, EqualTo, NumberRange
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///your_database.db'
+db = SQLAlchemy(app)
+# Specify the instance folder for SQLite
+app.config['SQLALCHEMY_INSTANCE_FOLDER'] = os.path.join(os.getcwd(), 'instance')
 db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -37,6 +40,11 @@ class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
+
+# Define LoginForm for user login
+class LoginForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
 
 # Define ProfileForm for user profile information
 class ProfileForm(FlaskForm):
