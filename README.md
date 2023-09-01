@@ -9,30 +9,7 @@ This project demonstrates the generation of artistic text using LSTM-based langu
 - User input for seed text to influence the generated text.
 - Styling and formatting for an enhanced user experience.
 
-## Folder Structure
 
-The project is organized as follows:
-
-```
-artistic_text_generation_project/
-│
-├── data/
-│   └── artistic_texts.txt
-│
-├── models/
-│   ├── lstm_model.py
-│   └── generator.py
-│
-├── requirements.txt
-├── README.md
-├── main.py (Flask app)
-├── app.py (Streamlit app)
-├── static/
-│   ├── style.css
-│
-└── templates/
-    ├── index.html
-```
 
 ## Installation
 
