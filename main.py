@@ -1,16 +1,20 @@
 import os
+from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, TextAreaField, FloatField, IntegerField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, NumberRange
 
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your_secret_key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///your_database.db'
-db = SQLAlchemy(app)
-# Specify the instance folder for SQLite
-app.config['SQLALCHEMY_INSTANCE_FOLDER'] = os.path.join(os.getcwd(), 'instance')
+# Define the instance folder path here
+INSTANCE_FOLDER_PATH = 'C:\instance'
+
+app = Flask(__name__, instance_relative_config=True)
+app.config.from_mapping(
+    SECRET_KEY='your_secret_key',
+    SQLALCHEMY_DATABASE_URI='sqlite:///your_database.db',
+)
+app.instance_path = os.path.join(os.getcwd(), INSTANCE_FOLDER_PATH)
 db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
