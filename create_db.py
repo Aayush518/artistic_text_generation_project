@@ -1,3 +1,4 @@
+import os  # Import the os module
 from main import app, db
 
 app.app_context().push()

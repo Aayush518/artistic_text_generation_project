@@ -11,17 +11,13 @@ INSTANCE_FOLDER_PATH = 'C:\\instance'
 
 app = Flask(__name__, instance_relative_config=True)
 app.config.from_mapping(
-    SECRET_KEY='a0235add9cfd757ecda29',  # Replace with your secret key
-    SQLALCHEMY_DATABASE_URI='sqlite:///your_database.db',  # Replace with your database URI
+    SECRET_KEY='your_secret_key',
+    SQLALCHEMY_DATABASE_URI='sqlite:///your_database.db',
 )
 app.instance_path = os.path.join(os.getcwd(), INSTANCE_FOLDER_PATH)
 db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
 
 # Define User model
 class User(UserMixin, db.Model):
