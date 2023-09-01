@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Head content -->
+</head>
+<body>
+    <h1>Style Customization</h1>
+    <!-- Form fields for customizing styles -->
+    <form method="POST" action="/customize_style">
+        <label for="style_name">Style Name:</label>
+        <input type="text" name="style_name" required><br>
+        <label for="font_size">Font Size:</label>
+        <input type="number" name="font_size" min="8" max="36" required><br>
+        <label for="font_color">Font Color:</label>
+        <input type="color" name="font_color" required><br>
+        <!-- Add more style customization options here -->
+        <button type="submit">Save Style</button>
+    </form>
+</body>
+</html>
